@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+body{
+    background: cornflowerblue;
+    height: 100vh;
+}
+.register_page{
+    width: 1000x;
+    margin: auto;
+}
+.form{
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    border-radius: 0.5rem;
+}
+.form input{
+    font-family: 'Times New Roman', Times, serif;
+    outline: 1;
+    background: #ADD8E6;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.submit{
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgb(26, 47, 88);
+}

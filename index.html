@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Stock Price Prediction</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='css/main.css') }}">
+    <script src='main.js'></script>
+    <style>
+        body {
+            background-image: url('static/images/bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;  /* or background-size: 100% 100%; for stretching */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+        
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; 
+        }
+        h2 {
+            font-family: 'Courier New', Courier, monospace;
+            /* text-align: center; */
+            font-weight: bold;
+            background: linear-gradient(to right, #a0ecc6, #12d570);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; 
+        }
+        h3 {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            width: 1000x;
+            margin: auto;
+            border: 2px solid #333; /* Border style (2px width, solid line) */
+            padding: 10px; /* Padding inside the box
+            /* width: 200px; Set the desired width */ 
+            background-color: #56d8e4; /* Background color for the box */
+            border-radius: 0.5rem;
+        }
+        #price_trend {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            width: 1000x;
+            margin: 1%;
+            border: 2px solid #333; /* Border style (2px width, solid line) */
+            padding: 10px; /* Padding inside the box
+            /* width: 200px; Set the desired width */ 
+            background-color: #9f01ea; /* Background color for the box */
+            border-radius: 0.5rem;
+        }
+        #copy_right {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: large;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="register_page">
+        
+        <h1>Google Stock Price Prediction (GOOG)</h1>
+        <h2><p>We are exclusively focusing on predicting Google's stock closing price.</p> <p>To predict the closing price, we use a machine learning model that takes into account various features. <p>Please enter the following details:</p></p></h2>
+        <div class="form">
+            <form action="{{url_for('predict')}}" method="POST">
+                Opening Price: <input type="number" name='bedrooms' placeholder="Enter the Opening Price"><br>
+                High Price: <input type="number" name='bathrooms' placeholder="Enter the High Price"><br>
+                Low Price: <input type="number" name='floors' placeholder="Enter the Low Price"><br>
+                Adjacent Close: <input type="number" name='yr_built' placeholder="Enter the Adjacent Close"><br>
+                <input type="submit" value="predict" class="submit">
+            </form>
+            <!-- <p> House Price is: {{data}}</p> -->
+        </div>
+        <h3>Predicted Closing Price of the Stock is: <span id="predicted_price">{{data}}</span></h3>
+        <p id="price_trend"></p>
+        <script>
+            // Replace '{{ data }}' with your JavaScript code to fetch or calculate the predicted price
+            const predictedPrice = parseFloat(document.getElementById("predicted_price").textContent);
+            const imageElement = document.getElementById("image_element");  // Parse as float
+            if (predictedPrice > 41) {
+                document.getElementById("price_trend").textContent = "The predicted closing price suggests that the stock is likely to increase in value..";
+                imageElement.src = "static/images/up.jpeg";
+                imageElement.alt = "Price Increase"
+            } else if (predictedPrice < 41) {
+                document.getElementById("price_trend").textContent = "The predicted closing price suggests that the stock is likely to decrease in value.";
+                imageElement.src = "static/images/down.jpeg";
+                imageElement.alt = "Price Decrease";
+            }
+        </script>
+        <center><p id="copy_right">&copy;Reeva Mishra-D093-60009220203</p></center>
+    </div>
+</body>
+
+</html>
